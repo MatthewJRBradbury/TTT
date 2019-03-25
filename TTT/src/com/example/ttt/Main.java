@@ -5,21 +5,28 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		//private char playerO = 'O';
-	     //private char playerX = 'X';
 		
 	         Board b = new Board();
+	         TurnController tc = new TurnController();
+	         GameLogic gl = new GameLogic();
+		     
+	         Scanner sc = new Scanner(System.in);
 	         
-	         TurnController tc = new TurnController(0, 'O');
+	         do {
+	        	 b.displayBoard();
+	        	 
+	         } while(!gl.checkIfWin() && !gl.boardFull());
+	         
+	         // If statement to check if the board is full and there is no win = tie
+	         // else statement = congratulate winner!
+	         
 	         char p = tc.getActivePlayer();
 	         int t = tc.getTurn();
 	         
 	         System.out.println("Player " + p + " Make Your Move! " + "Turn: " + t);
 	         
-	         b.displayBoard();
-	         
-	        Scanner sc = new Scanner(System.in);
-	 		
+	        // b.displayBoard();
+	         	 		
 	 		System.out.println("Enter your First coordinate: ");
 	 		int c1 = sc.nextInt();
 	 		

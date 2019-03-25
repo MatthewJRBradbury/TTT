@@ -1,12 +1,14 @@
 package com.example.ttt;
 
 public class TurnController {
-	private int turn = 1;
-	private char activePlayer = 'O';
+	private final char playerO = 'O';
+    private final char playerX = 'X';
+	private int turn;
+	private char activePlayer;
 	
-	public TurnController(int turn, char activePlayer) {
-    	this.turn = turn;
-    	this.activePlayer = activePlayer;
+	public TurnController() {
+    	turn = 1;
+    	activePlayer = playerO;
     }
 	
 	public int getTurn() {
