@@ -1,8 +1,8 @@
 package com.example.ttt;
 
 public class TurnController {
-	private final char playerO = 'O';
-    private final char playerX = 'X';
+	private char playerO = 'O';
+    private char playerX = 'X';
 	private int turn;
 	private char activePlayer;
 	
@@ -32,11 +32,11 @@ public class TurnController {
 	}
 	
 	public char switchPlayer(){
-		if(activePlayer == 'O'){
-			activePlayer = 'X';
+		if(activePlayer == playerO){
+			activePlayer = playerX;
 		}
 		else {
-			activePlayer = 'O';
+			activePlayer = playerO;
 		}
 		return activePlayer;
 	}

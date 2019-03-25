@@ -2,7 +2,7 @@ package com.example.ttt;
 
 public class Board {
 	
-	char[][] board;
+	private char[][] board;
 	
 	public Board() {
 	    board = new char[3][3]; 

@@ -11,4 +11,13 @@ public class GameLogic {
 		return false; // check if any cells empty
 		
 	}
+	
+	public boolean placeMark(int x, int y, Board b, char activePlayer) {
+		char gb[][] = b.getBoard();
+		gb[x][y] = activePlayer;
+		
+		b.setBoard(gb);
+		
+		return true;
+	}
 }
