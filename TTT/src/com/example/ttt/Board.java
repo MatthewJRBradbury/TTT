@@ -6,6 +6,11 @@ public class Board {
 	
 	public Board() {
 	    board = new char[3][3]; 
+	    for(int x = 0; x < board.length; x++){
+	    	for(int y = 0; y < board.length; y++){
+	    		board[x][y] = ' ';
+	    	}
+	    }
 	}
 
     public void displayBoard(){
