@@ -15,7 +15,7 @@ public class GameLogic {
 		
 	}
 	
-	// FIX THIS 
+	// FIX THIS (also maybe make a function that can be used for both row and column checks)
 	private char checkRows(char[][] gb){
 		for (int y = 0; y < 2; y ++) {
 			char temp = ' ';
