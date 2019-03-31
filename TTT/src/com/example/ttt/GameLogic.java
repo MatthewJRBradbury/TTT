@@ -2,25 +2,60 @@ package com.example.ttt;
 
 public class GameLogic {
 
-	public boolean checkIfWin() {
+	public boolean checkIfWin(int turn, Board b) {
+		char gb[][] = b.getBoard();
+		if (turn >= 5) { // ONLY RUN ON TURN 5
+			char row = checkRows(gb);
+			if (row == 'X' || row == 'O') {
+				System.out.println("returning true!");
+				return true;
+			}
+		}
 		return false; // check rows columns and diagonals
 		
 	}
 	
-	public boolean checkRow(){
+	// FIX THIS 
+	private char checkRows(char[][] gb){
+		for (int y = 0; y < 2; y ++) {
+			char temp = ' ';
+			int count = 0;
+			for (int x = 0; x < 2; x ++) {
+				if(gb[y][x] == ' ') {
+					break;
+				} 
+				else {
+					if(temp == ' ') {
+						temp = gb[y][x];
+					} 
+					else {
+						if(count == 1 && temp == gb[y][x]) {
+							return temp;
+						} 
+						else if(temp == gb[y][x]) {
+							temp = gb[y][x];
+							count++;
+						} 
+						else {
+							break;
+						}
+					}
+				}
+			}
+		}
+		return ' ';
+	}
+	
+	private boolean checkCols(){
 		return false;
 	}
 	
-	public boolean checkCols(){
+	private boolean checkDiags(){
 		return false;
 	}
 	
-	public boolean checkDiag(){
-		return false;
-	}
-	
-	public boolean boardFull(TurnController tc) {
-		if(tc.getTurn() == 10){
+	public boolean boardFull(int turn) {
+		if(turn == 10){
 			return true;
 		} else {
 			return false; // check if any cells empty		

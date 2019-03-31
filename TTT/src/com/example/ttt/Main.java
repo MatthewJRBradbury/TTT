@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		
-	         Board b = new Board();
+			 int curTurnCount;
+			 Board b = new Board();
 	         TurnController tc = new TurnController();
 	         GameLogic gl = new GameLogic();
 		     
@@ -36,13 +36,14 @@ public class Main {
 	        	 }while(!gl.placeMark(c1, c2, b, activePlayer)); //while token hasn't been placed
 	        	 b.displayBoard();
 	        	 tc.iterateTurn();
+	        	 curTurnCount = tc.getTurn();
 	        	 tc.switchPlayer(); // change active player
 		         
-	         } while(!gl.checkIfWin() && !gl.boardFull(tc)); // while no win and board isn't full
+	         } while(!gl.checkIfWin(curTurnCount, b) && !gl.boardFull(curTurnCount)); // while no win and board isn't full
 	         
 	         System.out.println("END");
 	         // If statement to check if the board is full and there is no win = tie
-	         if(!gl.checkIfWin() && gl.boardFull(tc)){
+	         if(!gl.checkIfWin(curTurnCount, b) && gl.boardFull(curTurnCount)){
 	        	 System.out.println("GAME OVER: IT'S a TIE!");
 	         } else{
 	        	 System.out.println("GAME OVER: Congratulations " + "Player You WIN!");
