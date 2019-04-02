@@ -39,14 +39,18 @@ public class Main {
 	        	 curTurnCount = tc.getTurn();
 	        	 tc.switchPlayer(); // change active player
 		         
-	         } while(!gl.checkIfWin(curTurnCount, b) && !gl.boardFull(curTurnCount)); // while no win and board isn't full
+	         } while(gl.checkIfWin(curTurnCount, b) != ' ' && !gl.boardFull(curTurnCount)); // while no win and board isn't full
 	         
 	         System.out.println("END");
+	         
+	         char ifWin = gl.checkIfWin(curTurnCount, b);
+	         System.out.println("ifWin = " + ifWin);
+	         
 	         // If statement to check if the board is full and there is no win = tie
-	         if(!gl.checkIfWin(curTurnCount, b) && gl.boardFull(curTurnCount)){
+	         if(ifWin != ' ' && gl.boardFull(curTurnCount)){
 	        	 System.out.println("GAME OVER: IT'S a TIE!");
 	         } else{
-	        	 System.out.println("GAME OVER: Congratulations " + "Player You WIN!");
+	        	 System.out.println("GAME OVER: Congratulations " + "Player You " + ifWin + " WIN!");
 	         }
 	         // else statement = congratulate winner!
 	         

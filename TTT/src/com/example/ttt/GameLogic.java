@@ -2,48 +2,27 @@ package com.example.ttt;
 
 public class GameLogic {
 
-	public boolean checkIfWin(int turn, Board b) {
+	public char checkIfWin(int turn, Board b) {
 		char gb[][] = b.getBoard();
 		if (turn >= 5) { // ONLY RUN ON TURN 5
 			char row = checkRows(gb);
-			if (row == 'X' || row == 'O') {
-				System.out.println("returning true!");
-				return true;
-			}
+			System.out.println("row = " + row);
+			return row;
 		}
-		return false; // check rows columns and diagonals
-		
+		return 'n'; // check rows columns and diagonals
 	}
 	
-	// FIX THIS (also maybe make a function that can be used for both row and column checks)
-	private char checkRows(char[][] gb){
-		for (int y = 0; y < 2; y ++) {
-			char temp = ' ';
-			int count = 0;
-			for (int x = 0; x < 2; x ++) {
-				if(gb[y][x] == ' ') {
-					break;
-				} 
-				else {
-					if(temp == ' ') {
-						temp = gb[y][x];
-					} 
-					else {
-						if(count == 1 && temp == gb[y][x]) {
-							return temp;
-						} 
-						else if(temp == gb[y][x]) {
-							temp = gb[y][x];
-							count++;
-						} 
-						else {
-							break;
-						}
-					}
-				}
+	private char checkRows(char gb[][]){
+		for(int i = 0; i < 3; i++){
+			if(checkLine(gb[i][0], gb[i][1],gb[i][2]) == true){
+				return gb[i][0];
 			}
 		}
-		return ' ';
+		return 'n';
+	}
+	
+	private boolean checkLine(char c1, char c2, char c3){
+		return((c1 != ' ') && (c1 == c2) && (c2 == c3));
 	}
 	
 	private boolean checkCols(){
